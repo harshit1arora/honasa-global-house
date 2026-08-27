@@ -68,18 +68,18 @@ export function BeautyProfileModal() {
                     .split(" ")
                     .map((n) => n[0])
                     .join("")
-                : "SJ"}
+                : "A"}
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-[0.625rem] font-bold uppercase tracking-wider text-clay">
-                  {profile.userRole || "Executive Founder & VIP Member"}
+                  {profile.userRole || "VIP Member"}
                 </span>
                 <span className="size-1.5 rounded-full bg-emerald-500" />
-                <span className="text-[0.6875rem] font-semibold text-emerald-600 dark:text-emerald-400">Authenticated</span>
+                <span className="text-[0.6875rem] font-semibold text-emerald-600 dark:text-emerald-400">Active Account</span>
               </div>
               <p className="font-display text-lg font-bold text-foreground leading-tight">
-                {profile.userName || "Shivang Jain"}
+                {profile.userName || "Alex"}
               </p>
               <p className="text-xs text-muted-foreground">
                 Calibrated for {market.city}
@@ -87,20 +87,10 @@ export function BeautyProfileModal() {
             </div>
           </div>
 
-          {/* Quick User Switcher */}
           <div className="flex items-center gap-2">
-            <button
-              onClick={() => {
-                const isShivang = (profile.userName || "").includes("Shivang");
-                updateProfile({
-                  userName: isShivang ? "Varun Alagh" : "Shivang Jain",
-                  userRole: isShivang ? "Co-Founder & CEO" : "Executive Founder & VIP Member",
-                });
-              }}
-              className="rounded-full border border-clay/40 bg-card px-3 py-1.5 text-xs font-bold text-clay hover:bg-clay/10 transition-colors cursor-pointer shadow-xs"
-            >
-              Switch User: {(profile.userName || "").includes("Shivang") ? "Varun Alagh" : "Shivang Jain"}
-            </button>
+            <span className="rounded-full border border-clay/30 bg-card px-3 py-1.5 text-xs font-bold text-clay shadow-xs">
+              Persona: Alex · VIP Member
+            </span>
           </div>
         </div>
 
@@ -153,6 +143,33 @@ export function BeautyProfileModal() {
           {/* TAB 1: Active Routine */}
           {activeTab === "routine" && (
             <div className="space-y-6">
+              {/* Credible Next Best Action Card (Golden Journey Step 8) */}
+              <div className="rounded-2xl border border-clay/40 bg-clay/10 p-4 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-[0.625rem] font-bold uppercase tracking-wider text-clay flex items-center gap-1.5">
+                    <Clock className="size-3.5" />
+                    <span>Next Best Action · Intelligent Reorder</span>
+                  </span>
+                  <span className="rounded-full bg-clay/20 px-2 py-0.5 text-[0.625rem] font-semibold text-clay">
+                    Rule-Based Timing
+                  </span>
+                </div>
+                <h5 className="font-display text-sm font-bold text-foreground">
+                  Your Aqualogica Glow+ Dewy Sunscreen (50g) is running low
+                </h5>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Based on your routine activation 18 days ago, your daily broad-spectrum SPF is at ~40% capacity. Reorder suggested in 12 days to prevent coverage gap.
+                </p>
+                <div className="pt-1 flex items-center gap-3">
+                  <button
+                    onClick={() => addToCart("aq-glow-sunscreen", 1, "am")}
+                    className="rounded-full bg-clay text-white px-4 py-1.5 text-xs font-bold hover:bg-clay/90 cursor-pointer shadow-xs"
+                  >
+                    1-Click Reorder ({price(449)})
+                  </button>
+                </div>
+              </div>
+
               <div className="flex items-center justify-between">
                 <div>
                   <span className="text-xs font-bold text-clay uppercase">Today's Regimen</span>

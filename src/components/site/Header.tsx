@@ -271,9 +271,9 @@ export function Header() {
           {/* Profile Badge */}
           <button
             onClick={() => setProfileOpen(true)}
-            aria-label="My Profile"
-            className="flex items-center gap-1.5 rounded-full border border-clay/40 bg-clay/10 px-2.5 py-1 text-xs font-bold text-clay hover:bg-clay/20 transition-all cursor-pointer shadow-xs"
-            title={`Logged in as ${profile.userName || "Shivang Jain"}`}
+            aria-label="My Beauty Profile"
+            className="flex items-center gap-1.5 rounded-full border border-clay/40 bg-clay/10 px-2.5 py-1 text-xs font-bold text-clay hover:bg-clay/20 transition-all cursor-pointer shadow-xs focus:outline-none focus:ring-2 focus:ring-clay"
+            title={`Logged in as ${profile.userName || "Alex"}`}
           >
             <div className="flex size-5 items-center justify-center rounded-full bg-clay text-[0.625rem] font-extrabold text-white uppercase">
               {profile.userName
@@ -281,10 +281,10 @@ export function Header() {
                     .split(" ")
                     .map((n) => n[0])
                     .join("")
-                : "SJ"}
+                : "A"}
             </div>
             <span className="hidden xl:inline font-display text-[0.75rem] font-bold text-foreground">
-              {profile.userName || "Shivang Jain"}
+              {profile.userName || "Alex"}
             </span>
           </button>
 

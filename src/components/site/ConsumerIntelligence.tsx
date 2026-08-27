@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ShieldCheck, Building2, MessageSquare, Database, Lightbulb, FlaskConical, Rocket, RefreshCw, CheckCircle2 } from "lucide-react";
 import { consumerIntelligenceStages, type IntelligenceStage } from "@/data/content";
+import { StatusBadge } from "@/components/ui/StatusBadge";
 
 const STAGE_ICONS = [
   MessageSquare,
@@ -20,7 +21,10 @@ export function ConsumerIntelligence() {
     <section className="border-b border-border/80 bg-background py-10 md:py-14">
       <div className="mx-auto max-w-[1440px] px-5 md:px-8">
         {/* Section Header */}
-        <div className="max-w-3xl">
+        <div className="max-w-3xl space-y-2">
+          <div className="flex items-center gap-2">
+            <StatusBadge mode="concept" text="Future-State Concept Vision" />
+          </div>
           <p className="eyebrow flex items-center gap-2 text-clay">
             <span className="size-1.5 rounded-full bg-clay" />
             The Feedback Flywheel

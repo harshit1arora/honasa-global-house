@@ -4,6 +4,7 @@ import { brands, type BrandDesire, desireLabels, type Brand } from "@/data/brand
 import { getProduct } from "@/data/products";
 import { productImage } from "@/data/images";
 import { useSite } from "@/lib/site-state";
+import { StatusBadge } from "@/components/ui/StatusBadge";
 
 const DESIRE_LIST: BrandDesire[] = [
   "nature",
@@ -30,7 +31,10 @@ export function HouseOfBrands() {
     <section id="brands-section" className="border-b border-border/80 bg-secondary/25 py-6 md:py-8">
       <div className="mx-auto max-w-[1440px] px-5 md:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="max-w-3xl space-y-2 mb-6">
+          <div className="flex items-center gap-2">
+            <StatusBadge mode="live" text="8 Autonomous House Portfolios" />
+          </div>
           <div>
             <p className="eyebrow flex items-center gap-2 text-clay">
               <span className="size-1.5 rounded-full bg-clay" />

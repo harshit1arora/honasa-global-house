@@ -24,22 +24,38 @@
 
 ---
 
-## 📊 Quantified Business Impact & Growth Metrics
+## 🧪 What We'd Validate (Product Hypotheses & Success Metrics)
 
-Our product architecture is engineered around high-performing consumer activation, basket size expansion, and retention loops:
+Rather than presenting pre-launch estimates as historical results, our architecture is built around clear, falsifiable hypotheses to validate in live market trials:
 
-| Metric Lever | Business Impact | Underlying Product Mechanism |
-| :--- | :---: | :--- |
-| **Average Order Value (AOV)** | **+35% Lift** | **1-Click 3-House Regimen Bundling** raises basket value from ₹359 (single item) to ₹1,150 by grouping complementary Cleanse + Treat + Protect steps with a 15% bundle discount. |
-| **Cart-to-Checkout Conversion**| **+18% Lift** | **Real-Time Bio-Compatibility Shield** calculates active ingredient pH harmony, neutralizing buyer anxiety around ingredient clashing (e.g. Salicylic BHA + Vitamin C). |
-| **45-Day Customer LTV** | **+40% Expansion** | **Automated Climate & Weather Telemetry Alerts** trigger timely replenishment prompts before serums or cleansers reach exhaustion. |
-| **Discovery Funnel Activation** | **+50% Speed** | **90-Second Diagnostic Onboarding Quiz** provides first-time users with instant routine recommendations in under 45 seconds. |
+| Hypothesis | Proposed Mechanism | Metric to Validate |
+| :--- | :--- | :--- |
+| **Cross-House Regimen Bundling** | Grouping Cleanse + Treat + Protect steps across 2-3 houses reduces friction compared to multi-site shopping. | **Basket Size & AOV Lift** vs single-brand baseline purchase history. |
+| **Active Bio-Compatibility Checklist** | Verifying active ingredient compatibility (e.g. Salicylic Acid + Niacinamide) neutralizes buyer anxiety about ingredient clashing. | **Cart-to-Checkout Conversion Rate** for multi-active regimens. |
+| **Climate Shift Recalibration** | Adjusting routine texture when users travel (e.g. Gurgaon monsoon to Dubai heat) maintains product efficacy. | **45-Day Retention & Reorder Propensity** among traveling cohorts. |
+| **Natural Language AI Consultation** | Conversational diagnostic intent parsing delivers faster product matching than traditional 20-question quiz forms. | **Time-to-Routine-Selection** (< 90 seconds target). |
+
+---
+
+## 🎬 Golden Journey Rehearsed Demo Script (90 Seconds)
+
+To present a zero-friction, demo-safe golden journey live to stakeholders:
+
+1. **Step 1 — Natural Input**: Open AI Concierge and type:
+   > *"I have acne, oily skin, live in Gurgaon, travelling to Dubai next week, budget under ₹2,000"*
+2. **Step 2 — Explainable Routine**: AI synthesizes a 3-step routine across houses (Mamaearth Ubtan Wash + The Derma Co. 2% Salicylic + Aqualogica Dewy SPF) under ₹2,000. Inspect the visible *"Why this?"* rationale card for active ingredients.
+3. **Step 3 — Dynamic Budget Adjuster**: Click **"Under ₹1,500"** to watch the system intelligently swap to value formulas with live price updates.
+4. **Step 4 — Climate Transition**: Click **"Travelling to Dubai?"** to trigger side-by-side climate recalibration (Gurgaon monsoon vs Dubai 42°C heat), showing why heavy moisture was swapped for water-gel hydration and photostable PA++++ UV protection.
+5. **Step 5 — Plain Language Explanation**: Ask *"why did you change this?"* to hear plain-language formulation reasoning.
+6. **Step 6 — Checkout Flow**: Click **"Add entire routine to cart"** -> Review the **Bio-Compatibility Checklist** (verifying zero active clashes) -> Complete Express Checkout.
+7. **Step 7 — Profile & Next Best Action**: Open My Beauty Profile (`Alex · VIP Member`) to view the saved routine and credible replenishment countdown (*"Sunscreen reorder suggested in 12 days based on 30-day usage"*).
+
+> [!TIP]
+> **Demo Resilience Note**: The application operates with 100% offline RAG knowledge fallback if the Gemini API key is unpopulated or network connection drops. A 90-second screen-recording backup is also archived in `scratch/demo_backup.mp4`.
 
 ---
 
 ## 🛠️ Technology Stack & System Architecture
-
-The application is built using modern, production-grade web technologies for ultra-fast performance, zero layout shift, and instant interactivity:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -51,9 +67,7 @@ The application is built using modern, production-grade web technologies for ult
 │       │                                                                 │
 │  TELEMETRY API   : Real-time Weather, Humidity, Temp, UV Index Telemetry│
 │       │                                                                 │
-│  ML RANKING      : Customer Cohort Efficacy & Reorder Propensity         │
-│       │                                                                 │
-│  LLM REASONER    : Natural Language Intent Parsing & Explainable Advice │
+│  LLM REASONER    : Gemini API + RAG Knowledge Fallback Engine          │
 │       │                                                                 │
 │  OUTPUT LAYER    : 1-Click Bio-Compatible Regimen Bundles               │
 └─────────────────────────────────────────────────────────────────────────┘
@@ -65,40 +79,15 @@ The application is built using modern, production-grade web technologies for ult
 - **Vite 8 & Bun**: Lightning-fast native runtime compilation and HMR development server.
 
 ### 2. Styling & Design Token System
-- **Tailwind CSS v4 & OKLCH Color Palette**: Custom-curated color tokens (`--color-clay`, `--color-sand`, glassmorphism backdrop blurs, and smooth micro-animations).
+- **Tailwind CSS v4 & OKLCH Color Palette**: Custom-curated color tokens (`--color-clay`, backdrop blurs, and smooth micro-animations).
 - **Lucide Icons**: Crisp, accessible iconography across all interactive elements.
 
 ### 3. AI & Search RAG Layer
-- **Google Gemini API RAG Engine**: Server-side / client-safe conversational search (`chat-service.ts` + `knowledge.ts`).
-- **Fuzzy Product Recognition**: Identifies misspellings, ingredient synonyms (*"vit c facewash"*, *"ubtan"*, *"rosemary shampoo"*, *"salicylic serum"*), and maps user queries to verified product URLs.
+- **Google Gemini API + RAG Engine**: Server-side / client-safe conversational search (`chat-service.ts` + `knowledge.ts`).
+- **Fuzzy Product Recognition**: Identifies misspellings, ingredient synonyms (*"vit c facewash"*, *"ubtan"*, *"rosemary shampoo"*, *"salicylic serum"*), and maps user queries to verified SKUs.
 
-### 4. Client State & Persistence
-- **Site Context API (`site-state.tsx`)**: Centralized reactive state managing cart lines, currency conversion, country markets, saved routines, and authenticated VIP profiles (*Shivang Jain / Varun Alagh*).
-
----
-
-## ✨ Key Product Features & User Flows
-
-1. **🛡️ Bio-Compatibility & Ingredient Conflict Shield**:
-   - Calculates real-time formulation synergy inside the cart drawer (`RoutineCartModal.tsx`).
-   - Displays a prominent **`Bio-Compatible Regimen Score: 98% Match`** badge with active ingredient safety validation.
-
-2. **📦 1-Click 3-House Regimen Bundling**:
-   - Integrated into product detail modals (`ProductDetailModal.tsx`).
-   - Allows users viewing any single SKU to bundle a complete 3-step routine (*Save 15%*) in a single click.
-
-3. **📊 Side-by-Side House Decision Matrix**:
-   - Interactive comparison table on the `/brands` page (`HouseOfBrands.tsx`) comparing formulation philosophies, core active ingredients, and target concerns across all 8 houses.
-
-4. **✈️ Travel & Climate Shift Routine Transition Tool**:
-   - Located in the Global Climate Adaptation section (`GlobalClimateBeauty.tsx`).
-   - Recommends an instant climate-swap routine bundle when users travel between climate zones (e.g. United Kingdom 🇬🇧 $\rightarrow$ United Arab Emirates 🇦🇪).
-
-5. **📤 Shareable Climate Regimen Card Exporter**:
-   - Diagnostic quiz result step (`BeautyQuizModal.tsx`) exports personalized routine links with 1-click clipboard copy confirmation (`Regimen Link Copied!`).
-
-6. **👤 Authenticated VIP Profile Switcher**:
-   - Header profile badge defaults to logged-in executive user **Shivang Jain** (*Executive Founder & VIP Member*) with 1-click profile switching to **Varun Alagh** (*Co-Founder & CEO*).
+### 4. Client State & LocalStorage Persistence
+- **Site Context API (`site-state.tsx`)**: Centralized reactive state managing cart lines, currency conversion, country markets, saved routines, and authenticated demo profile (`Alex · VIP Member`) with `localStorage` persistence across page reloads.
 
 ---
 
@@ -139,52 +128,6 @@ The application is built using modern, production-grade web technologies for ult
 
 ---
 
-## 🚀 Vercel Deployment Instructions
-
-The project is fully configured for **1-Click Vercel Deployment** with zero routing errors.
-
-### Option 1: Vercel Dashboard (Recommended)
-
-1. Push your code to your GitHub repository.
-2. Import the project into the [Vercel Dashboard](https://vercel.com/new).
-3. Vercel will automatically detect the configuration from `vercel.json`:
-   - **Framework Preset**: `Vite`
-   - **Build Command**: `bun run build` (or `npm run build`)
-   - **Output Directory**: `.output/public`
-4. Add Environment Variables on Vercel:
-   - `VITE_GEMINI_API_KEY`: *Your Gemini API Key*
-5. Click **Deploy**.
-
-### Option 2: Vercel CLI
-
-```bash
-npm i -g vercel
-vercel login
-vercel --prod
-```
-
-### Vercel Routing Configuration (`vercel.json`)
-The included [`vercel.json`](file:///c:/Users/harsh/Downloads/honasa-global-house-main/honasa-global-house-main/vercel.json) handles single-page application fallback rules so subroute refreshes (`/brands`, `/shop`, `/science`, `/journal`, `/about`) load cleanly without 404 errors:
-
-```json
-{
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "vite",
-  "buildCommand": "bun run build || npm run build",
-  "outputDirectory": ".output/public",
-  "cleanUrls": true,
-  "trailingSlash": false,
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
-}
-```
-
----
-
-## 📜 License & Compliance
+## 📜 Compliance & Ethics
 
 © 2026 **Honasa Consumer Limited**. All rights reserved. Built for global climate-adaptive personal care innovation across India, UAE, UK, US, Singapore, and Australia.

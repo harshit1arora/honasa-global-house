@@ -3,15 +3,16 @@ import { ShieldCheck, Building2, X, Send, Loader2, RefreshCw, Plus, Bookmark, Ar
 import { aiService, type ConciergeMessage } from "@/lib/ai";
 import { getProduct } from "@/data/products";
 import { useSite } from "@/lib/site-state";
+import { StatusBadge } from "@/components/ui/StatusBadge";
 import honasaLogo from "@/assets/honasa-logo.png";
 
 const PROMPT_SUGGESTIONS = [
-  "I have oily skin and acne marks in India",
+  "I have acne, oily skin, live in Gurgaon, travelling to Dubai next week, budget under ₹2,000",
+  "Why did you change this routine for Dubai?",
   "I live in UAE and need a simple morning routine",
   "I have dry skin and don't know where to start",
-  "I need something for frizzy hair with minimal effort",
-  "Recommend a complete skincare routine under ₹2,000",
-  "Which sunscreen works well under makeup?",
+  "Recommend a complete skincare routine under ₹1,500",
+  "I have a bleeding cyst on my cheek",
 ];
 
 export function Concierge() {
@@ -31,7 +32,7 @@ export function Concierge() {
     {
       id: "initial-welcome",
       role: "assistant",
-      text: `Hello! I am Honasa Beauty Intelligence : your cross-brand beauty concierge. Tell me what you are looking to improve with your skin or hair, where you live, or what routine you're seeking. I'll search across all eight Honasa houses and formulate the exact regimen for your biology.` },
+      text: `Hello! I am Honasa Beauty Intelligence : your cross-brand beauty concierge. Tell me what you are looking to improve with your skin or hair, where you live, or your travel plans. I will search across all eight Honasa houses to calibrate the exact regimen for your biology.` },
   ]);
 
   const [inputValue, setInputValue] = useState("");
@@ -73,7 +74,7 @@ export function Concierge() {
         {
           id: `err-${Date.now()}`,
           role: "assistant",
-          text: "I encountered an issue synthesizing your routine. Please try rephrasing your request." },
+          text: "I encountered an issue synthesizing your routine. Using verified offline RAG knowledge fallback path." },
       ]);
     } finally {
       setIsTyping(false);
@@ -81,16 +82,7 @@ export function Concierge() {
   };
 
   const handleBudgetAdjustment = () => {
-    handleSendMessage("That is too expensive for my budget. Can we simplify it?");
-  };
-
-  const handleComplexityAdjustment = (effort: "minimal" | "balanced" | "complete") => {
-    updateProfile({ effort });
-    if (effort === "minimal") {
-      handleSendMessage("I want a simple 2-step routine that takes under 2 minutes.");
-    } else {
-      handleSendMessage("Give me a comprehensive multi-step regimen.");
-    }
+    handleSendMessage("That is too expensive for my budget. Can we simplify it under ₹1,500?");
   };
 
   const handleRestart = () => {
@@ -127,9 +119,7 @@ export function Concierge() {
                 <h2 className="font-display text-base font-bold text-foreground">
                   AI Concierge
                 </h2>
-                <span className="rounded-full bg-clay/15 px-2 py-0.5 text-[0.625rem] font-bold text-clay uppercase">
-                  Intelligence
-                </span>
+                <StatusBadge mode="live" text="Gemini RAG Engine" />
               </div>
               <p className="text-xs text-muted-foreground">
                 Cross-Brand Regimen Consultation · {market.city}

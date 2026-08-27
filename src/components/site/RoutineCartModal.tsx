@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import { X, ShoppingBag, Plus, Minus, Trash2, Sun, Moon, ShieldCheck, AlertTriangle, ArrowRight, CheckCircle2, Lock, CreditCard } from "lucide-react";
 import { useSite, type CartLine } from "@/lib/site-state";
 import { getProduct, type Product } from "@/data/products";
+import { StatusBadge } from "@/components/ui/StatusBadge";
 import honasaLogo from "@/assets/honasa-logo.png";
 
 export function RoutineCartModal() {
@@ -115,26 +116,28 @@ export function RoutineCartModal() {
                         <ShieldCheck className="size-4.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                         <div>
                           <strong className="block font-bold text-sm text-foreground">
-                            Bio-Compatible Regimen Score: {missingSunscreenAlert ? "92%" : "98% Match"}
+                            Bio-Compatibility Checklist Verified
                           </strong>
                           <span className="text-[0.6875rem] text-muted-foreground">
-                            Zero active ingredient clashes detected across {new Set(cartProducts.map((c) => c.product.brand)).size} brand house(s)
+                            Zero active ingredient clashes across {new Set(cartProducts.map((c) => c.product.brand)).size} brand house(s)
                           </span>
                         </div>
                       </div>
-                      <span className="rounded-full bg-emerald-600/20 px-2.5 py-0.5 text-[0.6875rem] font-bold text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
-                        {missingSunscreenAlert ? "Requires SPF" : "Optimal Harmony"}
-                      </span>
+                      <StatusBadge mode="live" text={missingSunscreenAlert ? "Requires SPF" : "Optimal Sequence"} />
                     </div>
 
-                    <div className="mt-2.5 pt-2.5 border-t border-emerald-500/20 grid grid-cols-2 gap-2 text-[0.6875rem]">
+                    <div className="mt-2.5 pt-2.5 border-t border-emerald-500/20 grid grid-cols-1 sm:grid-cols-3 gap-2 text-[0.6875rem]">
                       <div className="flex items-center gap-1.5 text-emerald-800 dark:text-emerald-300">
-                        <CheckCircle2 className="size-3 shrink-0" />
-                        <span>pH & Actives Balanced</span>
+                        <CheckCircle2 className="size-3 shrink-0 text-emerald-500" />
+                        <span>No duplicate actives</span>
                       </div>
                       <div className="flex items-center gap-1.5 text-emerald-800 dark:text-emerald-300">
-                        <CheckCircle2 className="size-3 shrink-0" />
-                        <span>Calibrated for {market.city}</span>
+                        <CheckCircle2 className="size-3 shrink-0 text-emerald-500" />
+                        <span>Sequence makes sense</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 text-emerald-800 dark:text-emerald-300">
+                        <CheckCircle2 className="size-3 shrink-0 text-emerald-500" />
+                        <span>Designed for concern</span>
                       </div>
                     </div>
                   </div>

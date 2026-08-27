@@ -3,6 +3,7 @@ import { ArrowRight, ShieldCheck, Building2, Compass } from "lucide-react";
 import heroPortrait from "@/assets/hero-portrait.jpg";
 import { brands } from "@/data/brands";
 import { useSite } from "@/lib/site-state";
+import { StatusBadge } from "@/components/ui/StatusBadge";
 
 export function Hero() {
   const { setConciergeOpen, setQuizOpen } = useSite();
@@ -17,6 +18,10 @@ export function Hero() {
         <div className="grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
           {/* Left Column: Editorial Headline & Actions */}
           <div className="space-y-5">
+            <div className="flex items-center gap-2">
+              <StatusBadge mode="live" text="Live Intelligence Layer" />
+              <StatusBadge mode="simulated" text="Demo Mode" />
+            </div>
 
             {/* Cinematic High-Impact Founders Headline */}
             <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.02]">
@@ -53,18 +58,18 @@ export function Hero() {
             </div>
 
             {/* Clean Proof Bar */}
-            <div className="pt-6 border-t border-border/60 grid grid-cols-3 gap-4 text-left">
+            <div className="pt-6 border-t border-border/60 flex items-center justify-between gap-4 text-left">
               <div>
                 <span className="font-display text-2xl font-bold text-foreground">8</span>
                 <p className="text-xs text-muted-foreground mt-0.5 font-medium">Specialized Houses</p>
               </div>
               <div>
-                <span className="font-display text-2xl font-bold text-clay">100%</span>
-                <p className="text-xs text-muted-foreground mt-0.5 font-medium">Derm Tested</p>
+                <span className="font-display text-xl font-bold text-clay">Clean</span>
+                <p className="text-xs text-muted-foreground mt-0.5 font-medium">Dermatologist Tested</p>
               </div>
               <div>
-                <span className="font-display text-2xl font-bold text-foreground">6+</span>
-                <p className="text-xs text-muted-foreground mt-0.5 font-medium">Global Markets</p>
+                <span className="font-display text-2xl font-bold text-foreground">2</span>
+                <p className="text-xs text-muted-foreground mt-0.5 font-medium">Primary Markets (IN & AE)</p>
               </div>
             </div>
           </div>

@@ -308,10 +308,10 @@ export const mockAIService: AIService = {
     const p = products.find((x) => x.id === productId);
     if (!p) return "No review summary available.";
 
-    return `Based on ${p.reviews.toLocaleString()} verified customer reviews:
-• 91% reported visible improvement in ${p.concerns[0] ?? "skin clarity"} within 3 weeks.
-• Frequent praise for non-greasy absorption and zero pore clogging in humid weather.
-• Less than 1.4% reported initial mild purging, which resolved within 7 days.`;
+    return `Verified customer feedback for ${p.name}:
+• Formulated for non-greasy absorption and zero pore clogging in humid weather.
+• Pairs comfortably with active serums and broad-spectrum daily sun protection.
+• Dermatologically tested for sensitive skin compatibility.`;
   },
 
   async visualSearch({ fileName, styleName }) {

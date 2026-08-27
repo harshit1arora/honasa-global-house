@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FlaskConical, Atom, ShieldCheck, Microscope, ArrowRight, Building2, CheckCircle2 } from "lucide-react";
 import { traceProducts, type TraceProduct } from "@/data/content";
 import { useSite } from "@/lib/site-state";
+import { StatusBadge } from "@/components/ui/StatusBadge";
 
 export function ScienceRnD() {
   const { setActiveProductId } = useSite();
@@ -15,7 +16,10 @@ export function ScienceRnD() {
     <section id="science-section" className="border-b border-border/80 bg-secondary/30 py-6 md:py-8">
       <div className="mx-auto max-w-[1440px] px-5 md:px-8">
         {/* Section Header */}
-        <div className="max-w-3xl">
+        <div className="max-w-3xl space-y-2">
+          <div className="flex items-center gap-2">
+            <StatusBadge mode="simulated" text="Simulated R&D Traceability" />
+          </div>
           <p className="eyebrow flex items-center gap-2 text-clay">
             <span className="size-1.5 rounded-full bg-clay" />
             Rigorous Clean Formulations

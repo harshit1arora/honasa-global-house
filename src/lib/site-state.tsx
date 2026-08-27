@@ -85,39 +85,90 @@ interface SiteState {
 const SiteContext = createContext<SiteState | null>(null);
 
 export function SiteProvider({ children }: { children: ReactNode }) {
-  const [marketCode, setMarketCode] = useState(defaultMarket!.code);
-  const [cart, setCart] = useState<CartLine[]>([
-    { productId: "me-ubtan-face-wash", qty: 1, timeSlot: "both" },
-    { productId: "tdc-salicylic-serum", qty: 1, timeSlot: "pm" },
-  ]);
-  const [wishlist, setWishlist] = useState<string[]>(["aq-glow-sunscreen", "ds-haldi-vitc-serum"]);
-  const [selectedConcern, setSelectedConcern] = useState<Concern | null>("acne");
-
-  const [isReturningUser, setIsReturningUser] = useState(true);
-  const [profile, setProfile] = useState<BeautyProfile>({
-    userName: "Shivang Jain",
-    userRole: "Executive Founder & VIP Member",
-    concerns: ["acne", "pigmentation"],
-    skinFeel: "combination",
-    marketCode: defaultMarket!.code,
-    effort: "balanced",
-    budget: "mid",
-    audience: "any",
+  const [marketCode, setMarketCode] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("hns_market") || defaultMarket!.code;
+    }
+    return defaultMarket!.code;
   });
 
-  const [savedRoutines, setSavedRoutines] = useState<UserSavedRoutine[]>([
-    {
-      id: "routine-starter",
-      title: "Daily Clarifying & Glow Ritual",
-      createdAt: "Saved 3 days ago",
-      products: [
-        { id: "me-ubtan-face-wash", step: "Cleanse", time: "both" },
-        { id: "tdc-salicylic-serum", step: "Treat", time: "pm" },
-        { id: "aq-hydrate-gel", step: "Hydrate", time: "both" },
-        { id: "aq-glow-sunscreen", step: "Protect", time: "am" },
-      ],
-    },
-  ]);
+  const [cart, setCart] = useState<CartLine[]>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("hns_cart");
+      if (saved) {
+        try { return JSON.parse(saved); } catch {}
+      }
+    }
+    return [
+      { productId: "me-ubtan-face-wash", qty: 1, timeSlot: "both" },
+      { productId: "tdc-salicylic-serum", qty: 1, timeSlot: "pm" },
+    ];
+  });
+
+  const [wishlist, setWishlist] = useState<string[]>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("hns_wishlist");
+      if (saved) {
+        try { return JSON.parse(saved); } catch {}
+      }
+    }
+    return ["aq-glow-sunscreen", "ds-haldi-vitc-serum"];
+  });
+
+  const [selectedConcern, setSelectedConcern] = useState<Concern | null>("acne");
+  const [isReturningUser, setIsReturningUser] = useState(true);
+
+  const [profile, setProfile] = useState<BeautyProfile>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("hns_profile");
+      if (saved) {
+        try { return JSON.parse(saved); } catch {}
+      }
+    }
+    return {
+      userName: "Alex",
+      userRole: "VIP Member",
+      concerns: ["acne", "pigmentation"],
+      skinFeel: "combination",
+      marketCode: defaultMarket!.code,
+      effort: "balanced",
+      budget: "mid",
+      audience: "any",
+    };
+  });
+
+  const [savedRoutines, setSavedRoutines] = useState<UserSavedRoutine[]>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("hns_saved_routines");
+      if (saved) {
+        try { return JSON.parse(saved); } catch {}
+      }
+    }
+    return [
+      {
+        id: "routine-starter",
+        title: "Daily Clarifying & Glow Ritual",
+        createdAt: "Saved 3 days ago",
+        products: [
+          { id: "me-ubtan-face-wash", step: "Cleanse", time: "both" },
+          { id: "tdc-salicylic-serum", step: "Treat", time: "pm" },
+          { id: "aq-hydrate-gel", step: "Hydrate", time: "both" },
+          { id: "aq-glow-sunscreen", step: "Protect", time: "am" },
+        ],
+      },
+    ];
+  });
+
+  // Save to localStorage whenever state changes
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("hns_market", marketCode);
+      localStorage.setItem("hns_cart", JSON.stringify(cart));
+      localStorage.setItem("hns_wishlist", JSON.stringify(wishlist));
+      localStorage.setItem("hns_profile", JSON.stringify(profile));
+      localStorage.setItem("hns_saved_routines", JSON.stringify(savedRoutines));
+    }
+  }, [marketCode, cart, wishlist, profile, savedRoutines]);
 
   // Modals state
   const [activeProductId, setActiveProductId] = useState<string | null>(null);

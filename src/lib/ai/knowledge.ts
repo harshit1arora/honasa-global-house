@@ -86,7 +86,7 @@ export function retrieveRelevantKnowledge(
       matchedSnippets.push({
         category: "brand",
         title: `House: ${brand.name}`,
-        content: `${brand.name} (${brand.positioning}): ${brand.description} Core active: ${brand.activeIngredient}`,
+        content: `${brand.name} (${brand.positioning}): ${brand.description} Core focus: ${brand.consumerProblem}`,
         sourceUrl: `/brands`,
       });
     }
