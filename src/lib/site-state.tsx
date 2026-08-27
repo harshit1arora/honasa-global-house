@@ -122,7 +122,14 @@ export function SiteProvider({ children }: { children: ReactNode }) {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("hns_profile");
       if (saved) {
-        try { return JSON.parse(saved); } catch {}
+        try {
+          const parsed = JSON.parse(saved);
+          if (parsed.userName === "Alex" || !parsed.userName) {
+            parsed.userName = "Shivang Jain";
+            parsed.userRole = "Executive Founder & VIP Member";
+          }
+          return parsed;
+        } catch {}
       }
     }
     return {

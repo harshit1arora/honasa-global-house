@@ -23,6 +23,10 @@ export function BeautyProfileModal() {
 
   const [activeTab, setActiveTab] = useState<"routine" | "saved" | "wishlist" | "preferences">("routine");
 
+  const displayName = profile.userName && profile.userName !== "Alex" ? profile.userName : "Shivang Jain";
+  const displayRole = profile.userRole && profile.userRole !== "VIP Member" ? profile.userRole : "Executive Founder & VIP Member";
+  const initials = displayName.split(" ").map((n) => n[0]).join("");
+
   if (!profileOpen) return null;
 
   return (
@@ -34,23 +38,22 @@ export function BeautyProfileModal() {
 
       <div className="relative flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden rounded-3xl border border-border bg-background shadow-2xl z-10">
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-border/80 px-6 py-4 bg-background/95">
+        <div className="flex items-center justify-between border-b border-border/80 bg-background/95 px-6 py-4">
           <div className="flex items-center gap-3">
             <img
               src={honasaLogo}
               alt="Honasa Consumer"
-              className="h-8 w-auto object-contain"
+              className="h-10 w-auto object-contain"
             />
             <div>
-              <h3 className="font-display font-bold text-foreground">
+              <h3 className="font-display text-lg font-bold text-foreground">
                 My Beauty Profile
               </h3>
               <p className="text-xs text-muted-foreground">
-                Personalized Skin Memory & Routine Architecture
+                Biological Preferences & Routine Intelligence
               </p>
             </div>
           </div>
-
           <button
             onClick={() => setProfileOpen(false)}
             className="rounded-full p-1.5 text-muted-foreground hover:bg-secondary hover:text-foreground cursor-pointer"
@@ -63,23 +66,18 @@ export function BeautyProfileModal() {
         <div className="border-b border-border/70 bg-clay/5 px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="flex size-11 items-center justify-center rounded-2xl bg-clay text-white font-display text-base font-bold shadow-md">
-              {profile.userName
-                ? profile.userName
-                    .split(" ")
-                    .map((n) => n[0])
-                    .join("")
-                : "SJ"}
+              {initials}
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-[0.625rem] font-bold uppercase tracking-wider text-clay">
-                  {profile.userRole || "Executive Founder & VIP Member"}
+                  {displayRole}
                 </span>
                 <span className="size-1.5 rounded-full bg-emerald-500" />
                 <span className="text-[0.6875rem] font-semibold text-emerald-600 dark:text-emerald-400">Authenticated</span>
               </div>
               <p className="font-display text-lg font-bold text-foreground leading-tight">
-                {profile.userName || "Shivang Jain"}
+                {displayName}
               </p>
               <p className="text-xs text-muted-foreground">
                 Calibrated for {market.city}
@@ -89,7 +87,7 @@ export function BeautyProfileModal() {
 
           <div className="flex items-center gap-2">
             <span className="rounded-full border border-clay/30 bg-card px-3 py-1.5 text-xs font-bold text-clay shadow-xs">
-              Shivang Jain · Executive VIP
+              {displayName} · Executive VIP
             </span>
           </div>
         </div>
