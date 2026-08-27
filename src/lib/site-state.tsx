@@ -126,8 +126,8 @@ export function SiteProvider({ children }: { children: ReactNode }) {
       }
     }
     return {
-      userName: "Alex",
-      userRole: "VIP Member",
+      userName: "Shivang Jain",
+      userRole: "Executive Founder & VIP Member",
       concerns: ["acne", "pigmentation"],
       skinFeel: "combination",
       marketCode: defaultMarket!.code,

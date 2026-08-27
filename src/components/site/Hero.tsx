@@ -18,10 +18,6 @@ export function Hero() {
         <div className="grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
           {/* Left Column: Editorial Headline & Actions */}
           <div className="space-y-5">
-            <div className="flex items-center gap-2">
-              <StatusBadge mode="live" text="Live Intelligence Layer" />
-              <StatusBadge mode="simulated" text="Demo Mode" />
-            </div>
 
             {/* Cinematic High-Impact Founders Headline */}
             <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.02]">

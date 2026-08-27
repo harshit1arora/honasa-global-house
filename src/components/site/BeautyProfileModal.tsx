@@ -68,18 +68,18 @@ export function BeautyProfileModal() {
                     .split(" ")
                     .map((n) => n[0])
                     .join("")
-                : "A"}
+                : "SJ"}
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-[0.625rem] font-bold uppercase tracking-wider text-clay">
-                  {profile.userRole || "VIP Member"}
+                  {profile.userRole || "Executive Founder & VIP Member"}
                 </span>
                 <span className="size-1.5 rounded-full bg-emerald-500" />
-                <span className="text-[0.6875rem] font-semibold text-emerald-600 dark:text-emerald-400">Active Account</span>
+                <span className="text-[0.6875rem] font-semibold text-emerald-600 dark:text-emerald-400">Authenticated</span>
               </div>
               <p className="font-display text-lg font-bold text-foreground leading-tight">
-                {profile.userName || "Alex"}
+                {profile.userName || "Shivang Jain"}
               </p>
               <p className="text-xs text-muted-foreground">
                 Calibrated for {market.city}
@@ -89,7 +89,7 @@ export function BeautyProfileModal() {
 
           <div className="flex items-center gap-2">
             <span className="rounded-full border border-clay/30 bg-card px-3 py-1.5 text-xs font-bold text-clay shadow-xs">
-              Persona: Alex · VIP Member
+              Shivang Jain · Executive VIP
             </span>
           </div>
         </div>

@@ -48,7 +48,7 @@ To present a zero-friction, demo-safe golden journey live to stakeholders:
 4. **Step 4 — Climate Transition**: Click **"Travelling to Dubai?"** to trigger side-by-side climate recalibration (Gurgaon monsoon vs Dubai 42°C heat), showing why heavy moisture was swapped for water-gel hydration and photostable PA++++ UV protection.
 5. **Step 5 — Plain Language Explanation**: Ask *"why did you change this?"* to hear plain-language formulation reasoning.
 6. **Step 6 — Checkout Flow**: Click **"Add entire routine to cart"** -> Review the **Bio-Compatibility Checklist** (verifying zero active clashes) -> Complete Express Checkout.
-7. **Step 7 — Profile & Next Best Action**: Open My Beauty Profile (`Alex · VIP Member`) to view the saved routine and credible replenishment countdown (*"Sunscreen reorder suggested in 12 days based on 30-day usage"*).
+7. **Step 7 — Profile & Next Best Action**: Open My Beauty Profile (`Shivang Jain · VIP Member`) to view the saved routine and credible replenishment countdown (*"Sunscreen reorder suggested in 12 days based on 30-day usage"*).
 
 > [!TIP]
 > **Demo Resilience Note**: The application operates with 100% offline RAG knowledge fallback if the Gemini API key is unpopulated or network connection drops. A 90-second screen-recording backup is also archived in `scratch/demo_backup.mp4`.
@@ -87,7 +87,7 @@ To present a zero-friction, demo-safe golden journey live to stakeholders:
 - **Fuzzy Product Recognition**: Identifies misspellings, ingredient synonyms (*"vit c facewash"*, *"ubtan"*, *"rosemary shampoo"*, *"salicylic serum"*), and maps user queries to verified SKUs.
 
 ### 4. Client State & LocalStorage Persistence
-- **Site Context API (`site-state.tsx`)**: Centralized reactive state managing cart lines, currency conversion, country markets, saved routines, and authenticated demo profile (`Alex · VIP Member`) with `localStorage` persistence across page reloads.
+- **Site Context API (`site-state.tsx`)**: Centralized reactive state managing cart lines, currency conversion, country markets, saved routines, and authenticated demo profile (`Shivang Jain · VIP Member`) with `localStorage` persistence across page reloads.
 
 ---
 
